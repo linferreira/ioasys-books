@@ -2,22 +2,16 @@ import React from 'react';
 import { Background } from '../../components/Background';
 import { Input } from '../../components/Form/Input';
 import Image from 'next/image';
-import { Title, Wrapper, Container, Content } from './styles';
+import { Container, Content } from './styles';
+import { Logo } from '../../components/Logo';
+const img = '/assets/login-background.png'
 
 export const LoginForm = () => {
   return (
     <>
-      <Background>
+      <Background urlImg={img}>
         <Content>
-          <Wrapper>
-            <Image
-              src="/assets/logo.svg"
-              width={104.4}
-              height={36}
-              alt="Logo ioasys"
-            />
-            <Title>Books</Title>
-          </Wrapper>
+          <Logo color='white' />
 
           <Container>
             <Input label="Email" type="email" name="email" />

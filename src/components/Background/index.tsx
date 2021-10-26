@@ -1,10 +1,8 @@
 import React from 'react';
 import { Content } from './styles';
 
-export const Background = ({ children }) => {
+export const Background = ({ children, urlImg }) => {
   return (
-    <>
-      <Content>{children}</Content>
-    </>
+      <Content urlImg={urlImg}>{children}</Content>
   );
 };

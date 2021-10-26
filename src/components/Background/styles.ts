@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components';
 
-const img = '/assets/background.png'
+type ContentProps = {
+  urlImg: string;
+};
 
-export const Content = styled.div`
+export const Content = styled.div<ContentProps>`
   display: block;
   content: '';
-  background: url(${img}) no-repeat center center;
+  background: url(${({ urlImg }) => urlImg}) no-repeat center center;
   background-size: cover;
   height: 100vh;
   width: 100vw;
