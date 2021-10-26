@@ -1,6 +1,6 @@
-import Document, { Head, Html, Main, NextScript } from "next/document";
-import React from "react";
-import { ServerStyleSheet } from "styled-components";
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+import React from 'react';
+import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -30,8 +30,14 @@ export default class MyDocument extends Document {
   }
   render() {
     return (
-      <Html lang='pt-BR'>
-        <Head />
+      <Html lang="pt-BR">
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+          />
+          <title>ioasys Books</title>
+        </Head>
         <body>
           <Main />
           <NextScript />

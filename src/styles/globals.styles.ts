@@ -1,3 +1,4 @@
+import { theme } from './theme';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
@@ -6,5 +7,6 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     outline: none;
     box-sizing: border-box;
+    font-family: ${({theme}) => (theme.typography.family.primary)};
   }
 `;
