@@ -12,8 +12,6 @@ export const Title = styled.h1`
 `;
 
 export const Wrapper = styled.div`
-  width: 100%;
-  max-width: 1130px;
   display: flex;
   align-items: center;
 `;
