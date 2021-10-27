@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.button`
   ${({ theme }) => css`
     width: 100%;
     max-width: 272px;
@@ -10,13 +10,26 @@ export const Container = styled.div`
     margin-bottom: ${theme.spacing.md};
     padding: 19px 16px;
     display: flex;
+    cursor: pointer;
+    border: none;
+
+    :focus,
+    :hover {
+      opacity: 75%;
+    }
   `}
 `;
 
 export const Image = styled.img`
   width: 40%;
   height: 100%;
-  margin-right: ${({theme}) => theme.spacing.md};
+  margin-right: ${({ theme }) => theme.spacing.md};
+`;
+
+export const InfosContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const BookTitle = styled.h2`

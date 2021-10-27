@@ -5,6 +5,7 @@ import {
   Image,
   AuthorTitle,
   BookInfos,
+  InfosContainer,
 } from './styles';
 
 const data = {
@@ -20,17 +21,15 @@ export const Card = () => {
     <Container>
       <Image src="/assets/login-background.png" />
 
-      <div>
+      <InfosContainer>
         <BookTitle>{data.title}</BookTitle>
         {data.authors.map((author) => (
           <AuthorTitle> {author}</AuthorTitle>
         ))}
-        <BookInfos>
-          {data.totalPages} páginas
-          {data.publisher}
-          Publicado em {data.published}
-        </BookInfos>
-      </div>
+        <BookInfos>{data.totalPages} páginas</BookInfos>
+        <BookInfos> {data.publisher}</BookInfos>
+        <BookInfos> Publicado em {data.published}</BookInfos>
+      </InfosContainer>
     </Container>
   );
 };
