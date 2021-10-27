@@ -17,6 +17,10 @@ export const Container = styled.button`
     :hover {
       opacity: 75%;
     }
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+    }
   `}
 `;
 

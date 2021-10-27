@@ -5,4 +5,9 @@ export const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    padding:  0 20px;
+  }
+
 `;
