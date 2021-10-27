@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export const Content = styled.div`
-  /* ${({ theme }) => css`
-  `} */
+export const CardContainer = styled.div`
+  padding: 0 120px;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
