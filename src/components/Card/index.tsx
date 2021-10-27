@@ -1,4 +1,5 @@
 import React from 'react';
+import { Modal } from '../Modal';
 import {
   BookTitle,
   Container,
@@ -14,22 +15,25 @@ const data = {
   totalPages: 150,
   publisher: 'Editora Loyola',
   published: 2020,
+  imageUrl: "https://files-books.ioasys.com.br/Book-0.jpg"
 };
 
-export const Card = () => {
+export const Card = ({openModal}) => {
+
   return (
     <Container>
-      <Image src="/assets/login-background.png" />
+      <Image src={data.imageUrl} />
 
-      <InfosContainer>
+      <InfosContainer onClick={openModal}>
         <BookTitle>{data.title}</BookTitle>
-        {data.authors.map((author) => (
-          <AuthorTitle> {author}</AuthorTitle>
+        {data.authors.map((author, index) => (
+          <AuthorTitle key={index.toString()}> {author}</AuthorTitle>
         ))}
         <BookInfos>{data.totalPages} páginas</BookInfos>
         <BookInfos> {data.publisher}</BookInfos>
         <BookInfos> Publicado em {data.published}</BookInfos>
       </InfosContainer>
+
     </Container>
   );
 };

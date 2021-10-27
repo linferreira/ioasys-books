@@ -14,7 +14,7 @@ export const typography = {
     sm: '14px',
     md: '16px',
     lg: '24px',
-    xl: '32px',
+    xl: '28px',
     '2xl': '48px',
   },
   lineHeight: {
