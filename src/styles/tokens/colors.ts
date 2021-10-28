@@ -52,6 +52,7 @@ export const colors = {
   neutral: {
     black: '#000000',
     background: 'rgba(0, 0, 0, 0.36)',
+    lighterBackground: 'rgba(255,255,255,0.4)',
     white: '#ffffff',
   },
 } as const;
