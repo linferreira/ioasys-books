@@ -34,9 +34,7 @@ export const BookInfos = () => {
       <BookImage src={data.imageUrl} />
       <div>
         <BookTitle>{data.title}</BookTitle>
-        {data.authors.map((author, index) => (
-          <AuthorTitle key={index.toString()}> {author}</AuthorTitle>
-        ))}
+          <AuthorTitle > {data.authors.join(', ')}</AuthorTitle>
 
         <InfoTitle> Informações</InfoTitle>
         <InfosWrapper>
