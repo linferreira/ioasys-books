@@ -1,14 +1,27 @@
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 500px;
   width: 600px;
   display: flex;
+
+  @media (max-width: 768px) {
+    width: 70vw;
+    height: 90vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+  }
 `;
 
 export const BookImage = styled.img`
-  width: 50%;
   margin-right: ${({ theme }) => theme.spacing.md};
+
+  @media (max-width: 768px) {
+    margin: 0;
+    margin-bottom: ${({ theme }) => theme.spacing.lg};
+
+  }
 `;
 
 export const BookTitle = styled.h2`
@@ -45,7 +58,7 @@ export const InfosContainer = styled.div`
 `;
 
 export const InfosWrapper = styled.div`
-  margin-bottom: ${({theme}) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
 export const InfoTitles = styled.h3`
@@ -71,4 +84,3 @@ export const InfoItems = styled.p`
     font-size: ${theme.typography.sizes.xs};
   `}
 `;
-
