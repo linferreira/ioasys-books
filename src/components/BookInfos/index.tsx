@@ -1,16 +1,8 @@
 import React from 'react';
 import {
-  Wrapper,
-  BookImage,
-  BookTitle,
-  AuthorTitle,
-  InfosContainer,
-  InfoTitles,
-  InfoItems,
-  InfoTitle,
-  InfosWrapper,
+  AuthorTitle, BookImage,
+  BookTitle, InfoItems, InfosContainer, InfosWrapper, InfoTitle, InfoTitles, Wrapper
 } from './styles';
-import Image from 'next/image';
 
 const data = {
   id: '8f41b92c7460b9337660427e',
