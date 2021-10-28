@@ -2,22 +2,29 @@ import React from 'react';
 import { Background } from '../../components/Background';
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
+import { ModalContent } from '../../components/Modal';
 import { CardContainer } from './styles';
 const img = '/assets/home-background.png';
 
 export const HomeContent = () => {
+  const [showModal, setShowModal] = React.useState(false);
+
+  const openModal = () => setShowModal(true);
+
+  const closeModal = () => setShowModal(false);
+
   return (
     <>
       <Background urlImg={img}>
         <Header />
         <CardContainer>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-
+          <Card openModal={openModal} />
+          <Card openModal={openModal} />
+          <Card openModal={openModal} />
+          <Card openModal={openModal} />
+          <Card openModal={openModal} />
         </CardContainer>
+       <ModalContent showModal={showModal} closeModal={closeModal} />
       </Background>
     </>
   );
