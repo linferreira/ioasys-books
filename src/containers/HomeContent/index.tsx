@@ -17,7 +17,7 @@ export const HomeContent = () => {
   return (
     <>
       <Background urlImg={img}>
-        <Loading />
+        {/* <Loading /> */}
 
         <Header />
         <CardContainer>
