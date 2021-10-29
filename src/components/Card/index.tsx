@@ -19,13 +19,12 @@ export const Card = ({ book, openModal }: ICardProps) => {
   return (
     <Container onClick={openModal}>
       <Image src={book.imageUrl} />
-
       <InfosContainer>
         <BookTitle>{book.title}</BookTitle>
         <AuthorTitle> {book.authors.join(', ')}</AuthorTitle>
         <BookInfosContainer>
-          <BookInfos>{book.totalPages} páginas</BookInfos>
-          <BookInfos> {book.publisher}</BookInfos>
+          <BookInfos>{book.pageCount} páginas</BookInfos>
+          <BookInfos> Editora {book.publisher}</BookInfos>
           <BookInfos> Publicado em {book.published}</BookInfos>
         </BookInfosContainer>
       </InfosContainer>
