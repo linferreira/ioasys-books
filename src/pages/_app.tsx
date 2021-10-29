@@ -1,12 +1,16 @@
-import { AppProps } from "next/app";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "../styles/globals.styles";
-import { theme } from "../styles/theme";
+import { AppProps } from 'next/app';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { BooksStorage } from '../contexts/BooksContext';
+import { GlobalStyles } from '../styles/globals.styles';
+import { theme } from '../styles/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <BooksStorage>
+        <Component {...pageProps} />
+      </BooksStorage>
       <GlobalStyles />
     </ThemeProvider>
   );

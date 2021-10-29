@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, UserName, Wrapper } from './styles';
 import Image from 'next/image';
 import { Logo } from '../Logo';
 import { useRouter } from 'next/router';
+import { BooksContext } from '../../contexts/BooksContext';
 
 export const Header = () => {
   const Router = useRouter();
+  const { userName, userGender } = useContext(BooksContext);
 
   const logout = () => {
     localStorage.removeItem('@ioasys-books-token');
@@ -17,7 +19,8 @@ export const Header = () => {
       <Logo color="black" />
 
       <Wrapper>
-        <p>Bem-Vindo,</p> <UserName>Guilherme</UserName>
+        <p>{userGender === 'M' ? 'Bem-Vindo,' : 'Bem-Vinda,'}</p>{' '}
+        <UserName>{userName}!</UserName>
         <Button onClick={logout}>
           <Image
             src={`/assets/logout.svg`}

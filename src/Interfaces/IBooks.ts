@@ -12,7 +12,16 @@ export interface IBook {
   isbn13: string;
 }
 
-
 export interface IImageUrl {
   urlImg: string;
-};
+}
+
+export interface IContextInterface {
+  userName: string;
+  userGender: string;
+  isLoading: boolean;
+  page: number;
+  totalPages: number;
+  error: string;
+  userLogin: (email: string, password: string) => void
+}
