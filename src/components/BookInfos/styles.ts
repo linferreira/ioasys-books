@@ -1,16 +1,28 @@
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
-  width: 600px;
+  height: 80vh;
   display: flex;
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${(props) =>
+      props.theme.colors.neutral.lighterBackground};
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: ${(props) => props.theme.colors.neutral.background};
+  }
 
   @media (max-width: 768px) {
-    width: 70vw;
     height: 90vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: scroll;
   }
 `;
 
@@ -20,7 +32,6 @@ export const BookImage = styled.img`
   @media (max-width: 768px) {
     margin: 0;
     margin-bottom: ${({ theme }) => theme.spacing.lg};
-
   }
 `;
 
