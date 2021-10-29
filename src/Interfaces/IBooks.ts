@@ -11,3 +11,8 @@ export interface IBook {
   isbn10: string;
   isbn13: string;
 }
+
+
+export interface IImageUrl {
+  urlImg: string;
+};

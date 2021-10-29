@@ -1,10 +1,7 @@
 import styled, { css } from 'styled-components';
+import { IImageUrl } from '../../Interfaces/IBooks';
 
-type ContentProps = {
-  urlImg: string;
-};
-
-export const Content = styled.div<ContentProps>`
+export const Content = styled.div<IImageUrl>`
   display: block;
   content: '';
   background: url(${({ urlImg }) => urlImg}) no-repeat center center;

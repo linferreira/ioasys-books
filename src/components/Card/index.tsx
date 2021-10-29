@@ -24,7 +24,7 @@ export const Card = ({ book, loadDetails }: ICardProps) => {
         <AuthorTitle> {book.authors.join(', ')}</AuthorTitle>
         <BookInfosContainer>
           <BookInfos>{book.pageCount} páginas</BookInfos>
-          <BookInfos> {book.publisher}</BookInfos>
+          <BookInfos> Editora {book.publisher} </BookInfos>
           <BookInfos> Publicado em {book.published}</BookInfos>
         </BookInfosContainer>
       </InfosContainer>
