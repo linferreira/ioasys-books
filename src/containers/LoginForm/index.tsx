@@ -28,15 +28,18 @@ export const LoginForm = () => {
       setIsLoading(true);
       const { url, options } = TOKEN_POST({ email, password });
       const tokenRes = await fetch(url, options);
-      if (!tokenRes.ok) throw new Error(`Error: ${tokenRes.statusText}`);
       const res = await tokenRes.json();
-      const token = tokenRes.headers.get('Authorization')
+      if (!tokenRes.ok) {
+        setError(res.errors.message);
+        throw new Error(`Error: ${tokenRes.statusText}`);
+      }
 
-      localStorage.setItem("@ioasys-books-token", token);
+      const token = tokenRes.headers.get('Authorization');
+
+      localStorage.setItem('@ioasys-books-token', token);
 
       router.push('/home');
     } catch (err) {
-      setError(err.message);
     } finally {
       setIsLoading(false);
     }
@@ -65,7 +68,7 @@ export const LoginForm = () => {
               name="password"
               buttonTitle="Entrar"
             />
-            <TextError message={error} />
+            {error && <TextError message={error} />}
           </Container>
         </Content>
         {isLoading && <Loading />}

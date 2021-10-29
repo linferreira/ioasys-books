@@ -1,4 +1,5 @@
 import React from 'react';
+import { IBook } from '../../Interfaces/IBooks';
 import {
   BookTitle,
   Container,
@@ -6,33 +7,28 @@ import {
   AuthorTitle,
   BookInfos,
   InfosContainer,
+  BookInfosContainer,
 } from './styles';
 
-const data = {
-  title: 'Crossing the Chasm',
-  authors: ['Geoffrey A. Moore'],
-  totalPages: 150,
-  publisher: 'Editora Loyola',
-  published: 2020,
-  imageUrl: "https://files-books.ioasys.com.br/Book-0.jpg"
-};
+interface ICardProps {
+  book: IBook;
+  openModal: () => void;
+}
 
-export const Card = ({openModal}) => {
-
+export const Card = ({ book, openModal }: ICardProps) => {
   return (
-    <Container>
-      <Image src={data.imageUrl} />
+    <Container onClick={openModal}>
+      <Image src={book.imageUrl} />
 
-      <InfosContainer onClick={openModal}>
-        <BookTitle>{data.title}</BookTitle>
-        {data.authors.map((author, index) => (
-          <AuthorTitle key={index.toString()}> {author}</AuthorTitle>
-        ))}
-        <BookInfos>{data.totalPages} páginas</BookInfos>
-        <BookInfos> {data.publisher}</BookInfos>
-        <BookInfos> Publicado em {data.published}</BookInfos>
+      <InfosContainer>
+        <BookTitle>{book.title}</BookTitle>
+        <AuthorTitle> {book.authors.join(', ')}</AuthorTitle>
+        <BookInfosContainer>
+          <BookInfos>{book.totalPages} páginas</BookInfos>
+          <BookInfos> {book.publisher}</BookInfos>
+          <BookInfos> Publicado em {book.published}</BookInfos>
+        </BookInfosContainer>
       </InfosContainer>
-
     </Container>
   );
 };

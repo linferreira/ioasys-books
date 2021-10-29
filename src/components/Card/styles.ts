@@ -51,7 +51,13 @@ export const AuthorTitle = styled.h3`
     font-weight: ${theme.typography.weight.sm};
     line-height: ${theme.typography.lineHeight.md};
     font-size: ${theme.typography.sizes.xs};
-    margin-bottom: ${theme.spacing.lg};
+    text-align: start;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   `}
 `;
 
@@ -62,4 +68,11 @@ export const BookInfos = styled.p`
     line-height: ${theme.typography.lineHeight.md};
     font-size: ${theme.typography.sizes.xs};
   `}
+`;
+
+export const BookInfosContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: ${({ theme }) => theme.spacing.md};
 `;
