@@ -6,5 +6,8 @@ export interface IBook {
   publisher: string;
   published: number;
   imageUrl: string;
-  description: string
+  description: string;
+  language: string;
+  isbn10: string;
+  isbn13: string;
 }

@@ -17,7 +17,7 @@ export const HomeContent = () => {
   const [showModal, setShowModal] = React.useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<IBook[]>([]);
-  const [details, setDetails] = useState<IBook[]>([]);
+  const [details, setDetails] = useState<IBook>();
 
   async function loadBooks() {
     try {
@@ -52,7 +52,7 @@ export const HomeContent = () => {
         throw new Error(`Error: ${bookRes.statusText}`);
       }
 
-      setDetails(res.data);
+      setDetails(res);
       openModal();
     } catch (err) {
     } finally {
@@ -92,7 +92,7 @@ export const HomeContent = () => {
                 );
               })}
           </CardContainer>
-          <ModalContent showModal={showModal} closeModal={closeModal} />
+          <ModalContent showModal={showModal} closeModal={closeModal} book={details} />
         </Background>
         {isLoading && <Loading />}
       </>

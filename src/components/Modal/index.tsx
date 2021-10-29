@@ -1,13 +1,15 @@
 import { Box, Modal } from '@material-ui/core';
 import * as React from 'react';
+import { IBook } from '../../Interfaces/IBooks';
 import { BookInfos } from '../BookInfos';
 
-interface ModalProps {
+interface IModalProps {
   showModal: boolean;
   closeModal: () => void;
+  book: IBook;
 }
 
-export const ModalContent = ({ closeModal, showModal }: ModalProps) => {
+export const ModalContent = ({ closeModal, showModal, book }: IModalProps) => {
   return (
     <Modal
       open={showModal}
@@ -26,7 +28,7 @@ export const ModalContent = ({ closeModal, showModal }: ModalProps) => {
           p: 4,
         }}
       >
-        <BookInfos />
+        <BookInfos book={book} />
       </Box>
     </Modal>
   );
