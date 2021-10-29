@@ -79,27 +79,30 @@ export const HomeContent = () => {
   if (verified) {
     return (
       <>
-        <Background urlImg={img}>
-          <Header />
-          <CardContainer>
-            {data.length &&
-              data.map((item) => {
-                return (
-                  <Card
-                    book={item}
-                    key={item.id}
-                    loadDetails={loadBookDetails}
-                  />
-                );
-              })}
-          </CardContainer>
-          <ModalContent
-            showModal={showModal}
-            closeModal={closeModal}
-            book={details}
-          />
-        </Background>
-        {isLoading && <Loading />}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Background urlImg={img}>
+            <Header />
+            <CardContainer>
+              {data.length &&
+                data.map((item) => {
+                  return (
+                    <Card
+                      book={item}
+                      key={item.id}
+                      loadDetails={loadBookDetails}
+                    />
+                  );
+                })}
+            </CardContainer>
+            <ModalContent
+              showModal={showModal}
+              closeModal={closeModal}
+              book={details}
+            />
+          </Background>
+        )}
       </>
     );
   } else {
