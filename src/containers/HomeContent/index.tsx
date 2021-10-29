@@ -20,14 +20,12 @@ export const HomeContent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<IBook[]>([]);
   const [details, setDetails] = useState<IBook>();
-  const { updateTotalPages } = useContext(BooksContext);
+  const { page, updateTotalPages } = useContext(BooksContext);
 
   async function loadBooks() {
     try {
-      setIsLoading(true);
-
       const token = localStorage.getItem('@ioasys-books-token');
-      const { url, options } = BOOKS_GET(1, token);
+      const { url, options } = BOOKS_GET(page, token);
       const booksRes = await fetch(url, options);
       const res = await booksRes.json();
       setData(res.data);
@@ -70,10 +68,16 @@ export const HomeContent = () => {
       setVerified(false);
       Router.replace('/');
     } else {
+      setIsLoading(true);
       setVerified(true);
       loadBooks();
     }
   }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+    loadBooks();
+  }, [page]);
 
   const openModal = () => setShowModal(true);
 

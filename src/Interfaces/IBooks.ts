@@ -28,3 +28,8 @@ export interface IContextInterface {
   updatePage: (page: number) => void,
   logout: () => void,
 }
+
+export interface ILogin {
+  email: string,
+  password: string
+}
