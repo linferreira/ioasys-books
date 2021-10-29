@@ -23,13 +23,13 @@ export interface IContextInterface {
   page: number;
   totalPages: number;
   error: string;
-  userLogin: (email: string, password: string) => void,
-  updateTotalPages: (total: number) => void,
-  updatePage: (page: number) => void,
-  logout: () => void,
+  userLogin: (email: string, password: string) => void;
+  updateTotalPages: (total: number) => void;
+  updatePage: (page: number) => void;
+  logout: () => void;
 }
 
 export interface ILogin {
-  email: string,
-  password: string
+  email: string;
+  password: string;
 }

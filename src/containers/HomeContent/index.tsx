@@ -12,15 +12,24 @@ import { IBook } from '../../Interfaces/IBooks';
 import { CardContainer } from './styles';
 
 const img = '/assets/home-background.png';
+const Router = useRouter();
 
 export const HomeContent = () => {
-  const Router = useRouter();
   const [verified, setVerified] = useState(false);
   const [showModal, setShowModal] = React.useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<IBook[]>([]);
   const [details, setDetails] = useState<IBook>();
+
   const { page, updateTotalPages } = useContext(BooksContext);
+
+  function openModal() {
+    setShowModal(true);
+  }
+
+  function closeModal() {
+    setShowModal(false);
+  }
 
   async function loadBooks() {
     try {
@@ -78,10 +87,6 @@ export const HomeContent = () => {
     setIsLoading(true);
     loadBooks();
   }, [page]);
-
-  const openModal = () => setShowModal(true);
-
-  const closeModal = () => setShowModal(false);
 
   if (verified) {
     return (

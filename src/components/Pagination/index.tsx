@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
 import Image from 'next/image';
-import { Button, Container, Text } from './styles';
+import React, { useContext } from 'react';
 import { BooksContext } from '../../contexts/BooksContext';
+import { Button, Container, Text } from './styles';
 
 export const Pagination = () => {
   const { page, totalPages, updatePage } = useContext(BooksContext);

@@ -3,7 +3,7 @@ import { Title, Wrapper } from './styles';
 import Image from 'next/image';
 
 interface LogoProps {
-  color: 'white' | 'black'
+  color: 'white' | 'black';
 }
 
 export const Logo = ({ color }: LogoProps) => {

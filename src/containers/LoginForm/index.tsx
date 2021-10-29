@@ -11,12 +11,13 @@ const img = '/assets/login-background.png';
 export const LoginForm = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
   const { userLogin, error, isLoading } = React.useContext(BooksContext);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     userLogin(email, password);
-  };
+  }
 
   return (
     <>

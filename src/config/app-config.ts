@@ -1,6 +1,8 @@
+import { ILogin } from '../Interfaces/IBooks';
+
 export const API_URL = 'https://books.ioasys.com.br/api/v1';
 
-export function TOKEN_POST(body) {
+export function TOKEN_POST(body: ILogin) {
   return {
     url: `${API_URL}/auth/sign-in `,
     options: {
@@ -13,7 +15,7 @@ export function TOKEN_POST(body) {
   };
 }
 
-export function BOOKS_GET(page, token) {
+export function BOOKS_GET(page: number, token: string) {
   return {
     url: `${API_URL}/books?page=${page}&amount=12" `,
     options: {
@@ -25,7 +27,7 @@ export function BOOKS_GET(page, token) {
   };
 }
 
-export function BOOKSDETAILS_GET(id:string, token: string) {
+export function BOOKSDETAILS_GET(id: string, token: string) {
   return {
     url: `${API_URL}/books/${id} `,
     options: {

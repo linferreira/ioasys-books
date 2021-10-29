@@ -1,4 +1,3 @@
-import { theme } from './../../../styles/theme';
 import styled, { css } from 'styled-components';
 
 export const Label = styled.label`
@@ -73,7 +72,11 @@ export const Button = styled.button`
 
     :focus,
     :hover {
-      opacity: 75%;
+      opacity: 0.75;
+    }
+
+    :disabled {
+      opacity: 0.5;
     }
   `}
 `;

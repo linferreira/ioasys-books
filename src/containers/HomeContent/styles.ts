@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const CardContainer = styled.div`
   padding: 0 120px;
@@ -7,7 +7,6 @@ export const CardContainer = styled.div`
   justify-content: space-between;
 
   @media (max-width: 768px) {
-    padding:  0 20px;
+    padding: 0 20px;
   }
-
 `;

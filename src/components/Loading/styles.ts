@@ -10,5 +10,5 @@ export const Wrapper = styled.div`
   top: 0px;
   left: 0px;
   z-index: 1000;
-  background: ${({theme}) => theme.colors.neutral.background};
+  background: ${({ theme }) => theme.colors.neutral.background};
 `;

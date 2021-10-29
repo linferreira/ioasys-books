@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import React from 'react';
+import { IBook } from '../../Interfaces/IBooks';
 import {
   AuthorTitle,
   BookImage,
@@ -10,8 +12,6 @@ import {
   InfoTitles,
   Wrapper,
 } from './styles';
-import Image from 'next/image';
-import { IBook } from '../../Interfaces/IBooks';
 
 interface IBookProps {
   book: IBook;

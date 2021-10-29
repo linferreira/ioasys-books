@@ -3,7 +3,7 @@ export const colors = {
     lighter: '',
     light: '#999999',
     main: ' #B22E6F',
-    dark:  '#333333',
+    dark: '#333333',
     darker: '',
   },
   secundary: {
@@ -31,9 +31,9 @@ export const colors = {
     dark: '',
   },
   error: {
-    light:'',
-    main:'',
-    dark:'',
+    light: '',
+    main: '',
+    dark: '',
   },
   surface: {
     primary: '',

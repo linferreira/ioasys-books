@@ -1,18 +1,18 @@
 import React from 'react';
 import { IBook } from '../../Interfaces/IBooks';
 import {
+  AuthorTitle,
+  BookInfos,
+  BookInfosContainer,
   BookTitle,
   Container,
   Image,
-  AuthorTitle,
-  BookInfos,
   InfosContainer,
-  BookInfosContainer,
 } from './styles';
 
 interface ICardProps {
   book: IBook;
-  loadDetails: (id:string) => void
+  loadDetails: (id: string) => void;
 }
 
 export const Card = ({ book, loadDetails }: ICardProps) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Box, Arrow } from './styles';
+import { Arrow, Box, Container } from './styles';
 
 export const TextError = ({ message }) => {
   return (

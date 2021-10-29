@@ -4,14 +4,13 @@ import { TOKEN_POST } from '../config/app-config';
 import { IContextInterface } from '../Interfaces/IBooks';
 
 export const BooksContext = createContext<IContextInterface | null>(null);
+const Router = useRouter();
 
 interface IBookStoragProps {
   children: JSX.Element;
 }
 
 export const BooksStorage = ({ children }: IBookStoragProps) => {
-  const Router = useRouter();
-
   const [userName, setUserName] = useState('');
   const [userGender, setUserGender] = useState('');
   const [isLoading, setIsLoading] = useState(false);

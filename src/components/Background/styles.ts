@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { IImageUrl } from '../../Interfaces/IBooks';
 
 export const Content = styled.div<IImageUrl>`
