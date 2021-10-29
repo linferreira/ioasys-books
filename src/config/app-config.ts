@@ -24,3 +24,15 @@ export function BOOKS_GET(page, token) {
     },
   };
 }
+
+export function BOOKSDETAILS_GET(id:string, token: string) {
+  return {
+    url: `${API_URL}/books/${id} `,
+    options: {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token} `,
+      },
+    },
+  };
+}

@@ -12,19 +12,19 @@ import {
 
 interface ICardProps {
   book: IBook;
-  openModal: () => void;
+  loadDetails: (id:string) => void
 }
 
-export const Card = ({ book, openModal }: ICardProps) => {
+export const Card = ({ book, loadDetails }: ICardProps) => {
   return (
-    <Container onClick={openModal}>
+    <Container onClick={() => loadDetails(book.id)}>
       <Image src={book.imageUrl} />
       <InfosContainer>
         <BookTitle>{book.title}</BookTitle>
         <AuthorTitle> {book.authors.join(', ')}</AuthorTitle>
         <BookInfosContainer>
           <BookInfos>{book.pageCount} páginas</BookInfos>
-          <BookInfos> Editora {book.publisher}</BookInfos>
+          <BookInfos> {book.publisher}</BookInfos>
           <BookInfos> Publicado em {book.published}</BookInfos>
         </BookInfosContainer>
       </InfosContainer>

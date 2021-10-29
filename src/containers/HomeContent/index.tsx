@@ -6,7 +6,7 @@ import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
 import { ModalContent } from '../../components/Modal';
-import { BOOKS_GET } from '../../config/app-config';
+import { BOOKSDETAILS_GET, BOOKS_GET } from '../../config/app-config';
 import { IBook } from '../../Interfaces/IBooks';
 import { CardContainer } from './styles';
 const img = '/assets/home-background.png';
@@ -17,6 +17,7 @@ export const HomeContent = () => {
   const [showModal, setShowModal] = React.useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<IBook[]>([]);
+  const [details, setDetails] = useState<IBook[]>([]);
 
   async function loadBooks() {
     try {
@@ -24,14 +25,35 @@ export const HomeContent = () => {
 
       const token = localStorage.getItem('@ioasys-books-token');
       const { url, options } = BOOKS_GET(1, token);
-      const tokenRes = await fetch(url, options);
-      const res = await tokenRes.json();
+      const booksRes = await fetch(url, options);
+      const res = await booksRes.json();
 
       setData(res.data);
 
-      if (!tokenRes.ok) {
-        throw new Error(`Error: ${tokenRes.statusText}`);
+      if (!booksRes.ok) {
+        throw new Error(`Error: ${booksRes.statusText}`);
       }
+    } catch (err) {
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function loadBookDetails(id: string) {
+    try {
+      setIsLoading(true);
+
+      const token = localStorage.getItem('@ioasys-books-token');
+      const { url, options } = BOOKSDETAILS_GET(id, token);
+      const bookRes = await fetch(url, options);
+      const res = await bookRes.json();
+
+      if (!bookRes.ok) {
+        throw new Error(`Error: ${bookRes.statusText}`);
+      }
+
+      setDetails(res.data);
+      openModal();
     } catch (err) {
     } finally {
       setIsLoading(false);
@@ -61,7 +83,13 @@ export const HomeContent = () => {
           <CardContainer>
             {data.length &&
               data.map((item) => {
-                return <Card book={item} openModal={openModal} key={item.id} />;
+                return (
+                  <Card
+                    book={item}
+                    key={item.id}
+                    loadDetails={loadBookDetails}
+                  />
+                );
               })}
           </CardContainer>
           <ModalContent showModal={showModal} closeModal={closeModal} />
