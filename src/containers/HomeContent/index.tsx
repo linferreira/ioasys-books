@@ -61,7 +61,7 @@ export const HomeContent = () => {
           <CardContainer>
             {data.length &&
               data.map((item) => {
-                return <Card book={item} openModal={openModal} />;
+                return <Card book={item} openModal={openModal} key={item.id} />;
               })}
           </CardContainer>
           <ModalContent showModal={showModal} closeModal={closeModal} />
