@@ -27,6 +27,16 @@ export const BooksStorage = ({ children }: IBookStoragProps) => {
     setPage(page);
   }
 
+  function logout() {
+    setUserName('');
+    setUserGender('');
+    setPage(1);
+    setTotalPages(1);
+    setError('');
+    localStorage.removeItem('@ioasys-books-token');
+    Router.replace('/');
+  }
+
   async function userLogin(email: string, password: string) {
     try {
       setIsLoading(true);
@@ -65,6 +75,7 @@ export const BooksStorage = ({ children }: IBookStoragProps) => {
         userGender,
         updateTotalPages,
         updatePage,
+        logout,
       }}
     >
       {children}

@@ -20,7 +20,7 @@ export const HomeContent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<IBook[]>([]);
   const [details, setDetails] = useState<IBook>();
-  const { updateTotalPages, updatePage } = useContext(BooksContext);
+  const { updateTotalPages } = useContext(BooksContext);
 
   async function loadBooks() {
     try {

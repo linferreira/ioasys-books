@@ -1,18 +1,11 @@
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { BooksContext } from '../../contexts/BooksContext';
 import { Logo } from '../Logo';
 import { Button, Container, UserName, Wrapper } from './styles';
 
 export const Header = () => {
-  const Router = useRouter();
-  const { userName, userGender } = useContext(BooksContext);
-
-  const logout = () => {
-    localStorage.removeItem('@ioasys-books-token');
-    Router.replace('/');
-  };
+  const { userName, userGender, logout } = useContext(BooksContext);
 
   return (
     <Container>

@@ -26,4 +26,5 @@ export interface IContextInterface {
   userLogin: (email: string, password: string) => void,
   updateTotalPages: (total: number) => void,
   updatePage: (page: number) => void,
+  logout: () => void,
 }
