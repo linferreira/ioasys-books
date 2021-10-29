@@ -63,6 +63,7 @@ export const HomeContent = () => {
   useEffect(() => {
     const accessToken = localStorage.getItem('@ioasys-books-token');
     if (!accessToken) {
+      localStorage.removeItem('@ioasys-books-token');
       setVerified(false);
       Router.replace('/');
     } else {
@@ -92,7 +93,11 @@ export const HomeContent = () => {
                 );
               })}
           </CardContainer>
-          <ModalContent showModal={showModal} closeModal={closeModal} book={details} />
+          <ModalContent
+            showModal={showModal}
+            closeModal={closeModal}
+            book={details}
+          />
         </Background>
         {isLoading && <Loading />}
       </>
