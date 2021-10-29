@@ -1,15 +1,16 @@
 import { useRouter } from 'next/router';
-
 import React, { useContext, useEffect, useState } from 'react';
 import { Background } from '../../components/Background';
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
 import { ModalContent } from '../../components/Modal';
+import { Pagination } from '../../components/Pagination';
 import { BOOKSDETAILS_GET, BOOKS_GET } from '../../config/app-config';
 import { BooksContext } from '../../contexts/BooksContext';
 import { IBook } from '../../Interfaces/IBooks';
 import { CardContainer } from './styles';
+
 const img = '/assets/home-background.png';
 
 export const HomeContent = () => {
@@ -19,7 +20,7 @@ export const HomeContent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<IBook[]>([]);
   const [details, setDetails] = useState<IBook>();
-  const { page } = useContext(BooksContext);
+  const { updateTotalPages, updatePage } = useContext(BooksContext);
 
   async function loadBooks() {
     try {
@@ -30,6 +31,7 @@ export const HomeContent = () => {
       const booksRes = await fetch(url, options);
       const res = await booksRes.json();
       setData(res.data);
+      updateTotalPages(Math.round(res.totalPages));
 
       if (!booksRes.ok) {
         throw new Error(`Error: ${booksRes.statusText}`);
@@ -96,6 +98,7 @@ export const HomeContent = () => {
                     />
                   );
                 })}
+              <Pagination />
             </CardContainer>
             <ModalContent
               showModal={showModal}

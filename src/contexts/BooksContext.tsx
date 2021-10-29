@@ -19,6 +19,14 @@ export const BooksStorage = ({ children }: IBookStoragProps) => {
   const [totalPages, setTotalPages] = useState(1);
   const [error, setError] = useState('');
 
+  function updateTotalPages(total: number) {
+    setTotalPages(total);
+  }
+
+  function updatePage(page: number) {
+    setPage(page);
+  }
+
   async function userLogin(email: string, password: string) {
     try {
       setIsLoading(true);
@@ -55,6 +63,8 @@ export const BooksStorage = ({ children }: IBookStoragProps) => {
         error,
         userLogin,
         userGender,
+        updateTotalPages,
+        updatePage,
       }}
     >
       {children}

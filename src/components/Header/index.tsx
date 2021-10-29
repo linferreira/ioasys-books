@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { Button, Container, UserName, Wrapper } from './styles';
 import Image from 'next/image';
-import { Logo } from '../Logo';
 import { useRouter } from 'next/router';
+import React, { useContext } from 'react';
 import { BooksContext } from '../../contexts/BooksContext';
+import { Logo } from '../Logo';
+import { Button, Container, UserName, Wrapper } from './styles';
 
 export const Header = () => {
   const Router = useRouter();

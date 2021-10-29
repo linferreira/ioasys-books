@@ -23,5 +23,7 @@ export interface IContextInterface {
   page: number;
   totalPages: number;
   error: string;
-  userLogin: (email: string, password: string) => void
+  userLogin: (email: string, password: string) => void,
+  updateTotalPages: (total: number) => void,
+  updatePage: (page: number) => void,
 }
