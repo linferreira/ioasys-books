@@ -12,9 +12,10 @@ import { IBook } from '../../Interfaces/IBooks';
 import { CardContainer } from './styles';
 
 const img = '/assets/home-background.png';
-const Router = useRouter();
 
 export const HomeContent = () => {
+  const Router = useRouter();
+
   const [verified, setVerified] = useState(false);
   const [showModal, setShowModal] = React.useState(false);
   const [isLoading, setIsLoading] = useState(false);
