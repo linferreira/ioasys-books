@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 80vh;
+  height: 70vh;
   display: flex;
   overflow: auto;
+  margin: 48px;
 
   ::-webkit-scrollbar {
     width: 4px;
@@ -19,7 +20,8 @@ export const Wrapper = styled.div`
   }
 
   @media (max-width: 768px) {
-    height: 90vh;
+    width: 80vw;
+    margin: 24px;
     flex-direction: column;
     align-items: center;
     justify-content: center;

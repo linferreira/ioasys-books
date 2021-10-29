@@ -25,7 +25,6 @@ export const ModalContent = ({ closeModal, showModal, book }: IModalProps) => {
           transform: 'translate(-50%, -50%)',
           bgcolor: 'background.paper',
           boxShadow: 24,
-          p: 4,
         }}
       >
         <BookInfos book={book} />
