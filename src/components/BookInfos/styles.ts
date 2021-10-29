@@ -30,6 +30,11 @@ export const BookTitle = styled.h2`
     font-weight: ${theme.typography.weight.md};
     line-height: ${theme.typography.lineHeight.xl};
     font-size: ${theme.typography.sizes.xl};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   `}
 `;
 
@@ -40,6 +45,11 @@ export const AuthorTitle = styled.h3`
     line-height: ${theme.typography.lineHeight.md};
     font-size: ${theme.typography.sizes.xs};
     margin-bottom: ${theme.spacing.xl};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   `}
 `;
 

@@ -42,6 +42,12 @@ export const BookTitle = styled.h2`
     font-weight: ${theme.typography.weight.md};
     line-height: ${theme.typography.lineHeight.md};
     font-size: ${theme.typography.sizes.sm};
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   `}
 `;
 
@@ -67,6 +73,11 @@ export const BookInfos = styled.p`
     font-weight: ${theme.typography.weight.sm};
     line-height: ${theme.typography.lineHeight.md};
     font-size: ${theme.typography.sizes.xs};
+    text-align: start;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   `}
 `;
 
