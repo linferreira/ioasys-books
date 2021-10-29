@@ -13,7 +13,7 @@ export const Pagination = () => {
   }
 
   function handlePrevPage() {
-    if (page !== totalPages) {
+    if (page <= totalPages) {
       updatePage(page - 1);
     }
   }
