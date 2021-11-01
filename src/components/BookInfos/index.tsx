@@ -13,6 +13,8 @@ import {
   Wrapper,
 } from './styles';
 
+const unknowImg = '/assets/unknow.svg';
+
 interface IBookProps {
   book: IBook;
 }
@@ -20,7 +22,7 @@ interface IBookProps {
 export const BookInfos = ({ book }: IBookProps) => {
   return (
     <Wrapper>
-      <BookImage src={book.imageUrl} />
+      <BookImage src={book.imageUrl ? book.imageUrl : unknowImg} />
       <div>
         <BookTitle>{book.title}</BookTitle>
         <AuthorTitle> {book.authors.join(', ')}</AuthorTitle>

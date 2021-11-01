@@ -10,6 +10,8 @@ import {
   InfosContainer,
 } from './styles';
 
+const unknowImg = '/assets/unknow.svg';
+
 interface ICardProps {
   book: IBook;
   loadDetails: (id: string) => void;
@@ -18,7 +20,7 @@ interface ICardProps {
 export const Card = ({ book, loadDetails }: ICardProps) => {
   return (
     <Container onClick={() => loadDetails(book.id)}>
-      <Image src={book.imageUrl} />
+      <Image src={book.imageUrl ? book.imageUrl : unknowImg} />
       <InfosContainer>
         <BookTitle>{book.title}</BookTitle>
         <AuthorTitle> {book.authors.join(', ')}</AuthorTitle>

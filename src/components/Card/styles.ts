@@ -8,10 +8,12 @@ export const Container = styled.button`
     height: 160px;
     border-radius: ${theme.shapes.borderRadius.sm};
     margin-bottom: ${theme.spacing.md};
-    padding: 19px 16px;
+    padding: ${theme.spacing.md};
     display: flex;
     cursor: pointer;
     border: none;
+
+    box-shadow: 0px 6px 24px rgba(84, 16, 95, 0.13);
 
     :focus,
     :hover {
@@ -27,6 +29,7 @@ export const Container = styled.button`
 export const Image = styled.img`
   width: 40%;
   height: 100%;
+  max-height: 124px;
   max-width: 81px;
   margin-right: ${({ theme }) => theme.spacing.md};
 `;
@@ -76,8 +79,12 @@ export const BookInfos = styled.p`
     line-height: ${theme.typography.lineHeight.md};
     font-size: ${theme.typography.sizes.xs};
     text-align: start;
+
     overflow: hidden;
     text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   `}
 `;
 

@@ -29,9 +29,15 @@ export const Wrapper = styled.div`
 `;
 
 export const BookImage = styled.img`
+  width: 100%;
+  max-width: 349px;
+  height: 100%;
+  max-height: 512px;
   margin-right: ${({ theme }) => theme.spacing.md};
 
   @media (max-width: 768px) {
+    max-width: 240px;
+    max-height: 351px;
     margin: 0;
     margin-bottom: ${({ theme }) => theme.spacing.lg};
   }
