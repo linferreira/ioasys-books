@@ -12,6 +12,7 @@ interface IBookStoragProps {
 
 export const BooksStorage = ({ children }: IBookStoragProps) => {
   const Router = useRouter();
+  const queryClient = useQueryClient();
 
   const [userName, setUserName] = useState('');
   const [userGender, setUserGender] = useState('');
@@ -20,8 +21,6 @@ export const BooksStorage = ({ children }: IBookStoragProps) => {
   const [totalPages, setTotalPages] = useState(1);
   const [error, setError] = useState('');
 
-  const queryClient = useQueryClient();
-
   const loginMutation = useMutation(
     (data: ILogin) => {
       setIsLoading(true);
@@ -29,9 +28,11 @@ export const BooksStorage = ({ children }: IBookStoragProps) => {
       return api.user.login(data);
     },
     {
-      onError: (error: any, variables, context) => {
-        console.error(error);
-        setError(error?.response?.data?.error || error);
+      onError: (error, variables, context) => {
+        setError(
+          error?.response?.data?.errors?.message ||
+            'Infelizmente, algo deu errado.',
+        );
         setIsLoading(false);
       },
       onSuccess: (result, variables, context) => {
