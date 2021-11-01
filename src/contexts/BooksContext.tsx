@@ -30,7 +30,7 @@ export const BooksStorage = ({ children }: IBookStoragProps) => {
     },
     {
       onError: (error: any, variables, context) => {
-        console.log(error);
+        console.error(error);
         setError(error?.response?.data?.error || error);
         setIsLoading(false);
       },
