@@ -27,6 +27,7 @@ export const Container = styled.button`
 export const Image = styled.img`
   width: 40%;
   height: 100%;
+  max-width: 81px;
   margin-right: ${({ theme }) => theme.spacing.md};
 `;
 
@@ -42,6 +43,7 @@ export const BookTitle = styled.h2`
     font-weight: ${theme.typography.weight.md};
     line-height: ${theme.typography.lineHeight.md};
     font-size: ${theme.typography.sizes.sm};
+    text-align: start;
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -74,8 +76,6 @@ export const BookInfos = styled.p`
     line-height: ${theme.typography.lineHeight.md};
     font-size: ${theme.typography.sizes.xs};
     text-align: start;
-    white-space: nowrap;
-    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
   `}
