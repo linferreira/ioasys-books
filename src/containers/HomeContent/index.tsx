@@ -6,7 +6,7 @@ import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
 import { ModalContent } from '../../components/Modal';
 import { Pagination } from '../../components/Pagination';
-import { BOOKSDETAILS_GET, BOOKS_GET } from '../../config/app-config';
+import { BOOKSDETAILS_GET, BOOKS_GET } from '../../services/api';
 import { BooksContext } from '../../contexts/BooksContext';
 import { IBook } from '../../Interfaces/IBooks';
 import { CardContainer } from './styles';

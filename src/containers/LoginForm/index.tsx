@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Background } from '../../components/Background';
 import { TextError } from '../../components/Error';
 import { Input } from '../../components/Form/Input';
@@ -11,13 +11,12 @@ const img = '/assets/login-background.png';
 export const LoginForm = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const { error, isLoading, loginMutation } = useContext(BooksContext);
 
-  const { userLogin, error, isLoading } = React.useContext(BooksContext);
-
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    userLogin(email, password);
-  }
+    await loginMutation.mutate({ email, password });
+  };
 
   return (
     <>

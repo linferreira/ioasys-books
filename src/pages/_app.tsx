@@ -1,12 +1,12 @@
 import { AppProps } from 'next/app';
 import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from 'react-query';
 import { ThemeProvider } from 'styled-components';
 import { BooksStorage } from '../contexts/BooksContext';
+import queryClient from '../services/query';
 import { GlobalStyles } from '../styles/globals.styles';
 import { theme } from '../styles/theme';
-
-const queryClient = new QueryClient();
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,7 +15,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <BooksStorage>
           <Component {...pageProps} />
         </BooksStorage>
-      </QueryClientProvider>{' '}
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
       <GlobalStyles />
     </ThemeProvider>
   );

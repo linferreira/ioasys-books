@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
 import React, { createContext, useState } from 'react';
-import { TOKEN_POST } from '../config/app-config';
-import { IContextInterface } from '../Interfaces/IBooks';
+import { useMutation, useQueryClient } from 'react-query';
+import { IContextInterface, ILogin } from '../Interfaces/IBooks';
+import api from '../services/api';
 
 export const BooksContext = createContext<IContextInterface | null>(null);
 
@@ -18,6 +19,36 @@ export const BooksStorage = ({ children }: IBookStoragProps) => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [error, setError] = useState('');
+
+  const queryClient = useQueryClient();
+
+  const loginMutation = useMutation(
+    (data: ILogin) => {
+      setIsLoading(true);
+
+      return api.user.login(data);
+    },
+    {
+      onError: (error: any, variables, context) => {
+        console.log(error);
+        setError(error?.response?.data?.error || error);
+        setIsLoading(false);
+      },
+      onSuccess: (result, variables, context) => {
+        const token = result.headers.authorization;
+        localStorage.setItem('@ioasys-books-token', token);
+
+        queryClient.setQueryData('session', result.data);
+
+        const name = result.data.name.split(' ');
+        const gender = result.data.gender;
+        setUserName(name[0]);
+        setUserGender(gender);
+        Router.push('/home');
+        setIsLoading(false);
+      },
+    },
+  );
 
   function updateTotalPages(total: number) {
     setTotalPages(total);
@@ -37,32 +68,6 @@ export const BooksStorage = ({ children }: IBookStoragProps) => {
     Router.replace('/');
   }
 
-  async function userLogin(email: string, password: string) {
-    try {
-      setIsLoading(true);
-      const { url, options } = TOKEN_POST({ email, password });
-      const tokenRes = await fetch(url, options);
-      const res = await tokenRes.json();
-      if (!tokenRes.ok) {
-        setError(res.errors.message);
-        throw new Error(`Error: ${tokenRes.statusText}`);
-      }
-
-      const name = res.name.split(' ');
-
-      setUserName(name[0]);
-      setUserGender(res.gender);
-
-      const token = tokenRes.headers.get('Authorization');
-
-      localStorage.setItem('@ioasys-books-token', token);
-
-      Router.push('/home');
-    } catch (err) {
-    } finally {
-      setIsLoading(false);
-    }
-  }
   return (
     <BooksContext.Provider
       value={{
@@ -71,11 +76,11 @@ export const BooksStorage = ({ children }: IBookStoragProps) => {
         page,
         totalPages,
         error,
-        userLogin,
         userGender,
         updateTotalPages,
         updatePage,
         logout,
+        loginMutation,
       }}
     >
       {children}

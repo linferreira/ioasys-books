@@ -1,3 +1,6 @@
+import { AxiosResponse } from 'axios';
+import { UseMutationResult } from 'react-query';
+
 export interface IBook {
   id: string;
   title: string;
@@ -23,10 +26,10 @@ export interface IContextInterface {
   page: number;
   totalPages: number;
   error: string;
-  userLogin: (email: string, password: string) => void;
   updateTotalPages: (total: number) => void;
   updatePage: (page: number) => void;
   logout: () => void;
+  loginMutation: UseMutationResult<AxiosResponse>
 }
 
 export interface ILogin {
