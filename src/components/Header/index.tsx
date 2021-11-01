@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
-import { BooksContext } from '../../contexts/BooksContext';
+import { UserContext } from '../../contexts/UserContext';
 import { Logo } from '../Logo';
 import { Button, Container, UserName, Wrapper } from './styles';
 
 export const Header = () => {
-  const { userName, userGender, logout } = useContext(BooksContext);
+  const { userName, userGender, logout } = useContext(UserContext);
 
   return (
     <Container>

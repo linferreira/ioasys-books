@@ -24,7 +24,10 @@ http.interceptors.request.use((config) => {
 
 const api = {
   user: {
-    login: (data: ILogin) => http.post('/auth/sign-in', data),
+    USER_LOGIN: (data: ILogin) => http.post('/auth/sign-in', data),
+  },
+  books: {
+    BOOKS_GET: (page: number) => http.get(`/books?page=${page}&amount=12" `),
   },
 };
 
