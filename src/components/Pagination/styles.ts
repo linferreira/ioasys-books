@@ -21,9 +21,12 @@ export const Text = styled.p`
 `;
 
 export const Container = styled.div`
-  margin-top: ${({ theme }) => theme.spacing.md};
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  ${({ theme }) => css`
+    margin-top: ${theme.spacing.md};
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: ${theme.spacing.lg};
+  `}
 `;
