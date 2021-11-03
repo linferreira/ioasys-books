@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { ILogin, IUserContextInterface } from '../Interfaces/user';
 import api from '../services/api';
@@ -35,10 +35,13 @@ export const UserStorage = ({ children }: IUserStorageProps) => {
       },
       onSuccess: (result) => {
         const token = result.headers.authorization;
-        localStorage.setItem('@ioasys-books-token', token);
-
         const name = result.data.name.split(' ');
         const gender = result.data.gender;
+
+        localStorage.setItem('@ioasys-books-token', token);
+        localStorage.setItem('@ioasys-books-userName', name[0]);
+        localStorage.setItem('@ioasys-books-userGender', gender);
+
         setUserName(name[0]);
         setUserGender(gender);
         Router.push('/home');
@@ -59,6 +62,15 @@ export const UserStorage = ({ children }: IUserStorageProps) => {
     localStorage.removeItem('@ioasys-books-token');
     Router.replace('/');
   }
+
+
+  useEffect(() => {
+    const name = localStorage.getItem('@ioasys-books-userName');
+    const gender = localStorage.getItem('@ioasys-books-userGender');
+
+    setUserName(name);
+    setUserGender(gender);
+  }, [])
 
   return (
     <UserContext.Provider
