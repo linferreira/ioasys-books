@@ -44,7 +44,6 @@ export const BookTitle = styled.h2`
   ${({ theme }) => css`
     color: ${theme.colors.primary.dark};
     font-weight: ${theme.typography.weight.md};
-    line-height: ${theme.typography.lineHeight.md};
     font-size: ${theme.typography.sizes.sm};
     text-align: start;
 
@@ -60,7 +59,6 @@ export const AuthorTitle = styled.h3`
   ${({ theme }) => css`
     color: ${theme.colors.secundary.main};
     font-weight: ${theme.typography.weight.sm};
-    line-height: ${theme.typography.lineHeight.md};
     font-size: ${theme.typography.sizes.xs};
     text-align: start;
 
@@ -76,7 +74,6 @@ export const BookInfos = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.primary.light};
     font-weight: ${theme.typography.weight.sm};
-    line-height: ${theme.typography.lineHeight.md};
     font-size: ${theme.typography.sizes.xs};
     text-align: start;
 

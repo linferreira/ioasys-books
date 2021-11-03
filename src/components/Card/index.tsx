@@ -1,5 +1,5 @@
 import React from 'react';
-import { IBook } from '../../Interfaces/IBooks';
+import { IBook } from '../../Interfaces/book';
 import {
   AuthorTitle,
   BookInfos,

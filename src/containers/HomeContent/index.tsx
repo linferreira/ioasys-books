@@ -8,8 +8,7 @@ import { Loading } from '../../components/Loading';
 import { ModalContent } from '../../components/Modal';
 import { Pagination } from '../../components/Pagination';
 import { BooksContext } from '../../contexts/BooksContext';
-import { IBook } from '../../Interfaces/IBooks';
-import { BOOKSDETAILS_GET } from '../../services/api';
+import { UserContext } from '../../contexts/UserContext';
 import { CardContainer } from './styles';
 
 const img = '/assets/home-background.png';
@@ -18,43 +17,22 @@ export const HomeContent = () => {
   const Router = useRouter();
 
   const [verified, setVerified] = useState(false);
-  const [showModal, setShowModal] = React.useState(false);
-  const [details, setDetails] = useState<IBook>();
 
   const {
-    page,
-    updateTotalPages,
     isLoading,
     booksList,
     bookDetails,
     error,
-    loadBookMutation,
+    loadBooksMutation,
+    loadBookDetailsMutation,
+    showModal,
+    hadleShowModal,
   } = useContext(BooksContext);
 
-  function openModal() {
-    setShowModal(true);
-  }
+  const { currentPage } = useContext(UserContext);
 
-  function closeModal() {
-    setShowModal(false);
-  }
-
-  async function loadBookDetails(id: string) {
-    try {
-      const token = localStorage.getItem('@ioasys-books-token');
-      const { url, options } = BOOKSDETAILS_GET(id, token);
-      const bookRes = await fetch(url, options);
-      const res = await bookRes.json();
-
-      if (!bookRes.ok) {
-        throw new Error(`Error: ${bookRes.statusText}`);
-      }
-
-      setDetails(res);
-      openModal();
-    } catch (err) {
-    } finally {
-    }
+  function loadBookDetails(id: string) {
+    loadBookDetailsMutation.mutate(id);
   }
 
   useEffect(() => {
@@ -69,8 +47,8 @@ export const HomeContent = () => {
   }, []);
 
   useEffect(() => {
-    loadBookMutation.mutate(null);
-  }, [page]);
+    loadBooksMutation.mutate(currentPage);
+  }, [currentPage]);
 
   if (verified) {
     return (
@@ -99,8 +77,8 @@ export const HomeContent = () => {
                 </CardContainer>
                 <ModalContent
                   showModal={showModal}
-                  closeModal={closeModal}
-                  book={details}
+                  closeModal={hadleShowModal}
+                  book={bookDetails}
                 />
               </Background>
             )}

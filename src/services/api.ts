@@ -27,32 +27,9 @@ const api = {
     USER_LOGIN: (data: ILogin) => http.post('/auth/sign-in', data),
   },
   books: {
-    BOOKS_GET: (page: number) => http.get(`/books?page=${page}&amount=12" `),
+    BOOKS_GET: (page: number) => http.get(`/books?page=${page}&amount=12`),
+    BOOKSDETAILS_GET: (id: string) => http.get(`/books/${id} `),
   },
 };
 
 export default api;
-
-export function BOOKS_GET(page: number, token: string) {
-  return {
-    url: `${API_URL}/books?page=${page}&amount=12" `,
-    options: {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token} `,
-      },
-    },
-  };
-}
-
-export function BOOKSDETAILS_GET(id: string, token: string) {
-  return {
-    url: `${API_URL}/books/${id} `,
-    options: {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token} `,
-      },
-    },
-  };
-}

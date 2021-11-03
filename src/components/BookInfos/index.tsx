@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { IBook } from '../../Interfaces/IBooks';
+import { IBook } from '../../Interfaces/book';
 import {
   AuthorTitle,
   BookImage,

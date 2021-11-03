@@ -19,28 +19,15 @@ export interface IImageUrl {
   urlImg: string;
 }
 
-export interface IUserContextInterface {
-  userName: string;
-  userGender: string;
-  isLoading: boolean;
-  error: string;
-  logout: () => void;
-  loginMutation: UseMutationResult<AxiosResponse>;
-}
-
 export interface IBookContextInterface {
   booksList: IBook[];
   bookDetails: IBook;
   isLoading: boolean;
-  page: number;
   totalPages: number;
   error: string;
   updateTotalPages: (total: number) => void;
-  updatePage: (page: number) => void;
-  loadBookMutation: UseMutationResult<AxiosResponse>;
-}
-
-export interface ILogin {
-  email: string;
-  password: string;
+  loadBooksMutation: UseMutationResult<AxiosResponse>;
+  loadBookDetailsMutation: UseMutationResult<AxiosResponse>;
+  hadleShowModal: (isOpen: boolean) => void;
+  showModal: boolean;
 }

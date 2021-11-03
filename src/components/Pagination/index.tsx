@@ -1,29 +1,31 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { BooksContext } from '../../contexts/BooksContext';
+import { UserContext } from '../../contexts/UserContext';
 import { Button, Container, Text } from './styles';
 
 export const Pagination = () => {
-  const { page, totalPages, updatePage } = useContext(BooksContext);
+  const { totalPages } = useContext(BooksContext);
+  const { currentPage, updateCurrentPage } = useContext(UserContext);
 
   function handleNextPage() {
-    if (page < totalPages) {
-      updatePage(page + 1);
+    if (currentPage < totalPages) {
+      updateCurrentPage(currentPage + 1);
     }
   }
 
   function handlePrevPage() {
-    if (page <= totalPages) {
-      updatePage(page - 1);
+    if (currentPage <= totalPages) {
+      updateCurrentPage(currentPage - 1);
     }
   }
 
   return (
     <Container>
       <Text>
-        Página <b>{page}</b> de <b>{totalPages}</b>
+        Página <b>{currentPage}</b> de <b>{totalPages}</b>
       </Text>
-      <Button disabled={page === 1} onClick={handlePrevPage}>
+      <Button disabled={currentPage === 1} onClick={handlePrevPage}>
         <Image
           src={`/assets/prev.svg`}
           width={32}
@@ -32,7 +34,7 @@ export const Pagination = () => {
         />
       </Button>
 
-      <Button disabled={page === totalPages} onClick={handleNextPage}>
+      <Button disabled={currentPage === totalPages} onClick={handleNextPage}>
         <Image
           src={`/assets/next.svg`}
           width={32}

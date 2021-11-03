@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { createContext, useState } from 'react';
-import { useMutation, useQueryClient } from 'react-query';
-import { IUserContextInterface, ILogin } from '../Interfaces/IBooks';
+import { useMutation } from 'react-query';
+import { IUserContextInterface } from '../Interfaces/user';
 import api from '../services/api';
 
 export const UserContext = createContext<IUserContextInterface | null>(null);
@@ -16,8 +16,7 @@ export const UserStorage = ({ children }: IUserStorageProps) => {
   const [userName, setUserName] = useState('');
   const [userGender, setUserGender] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState('');
 
   const loginMutation = useMutation(
@@ -48,19 +47,14 @@ export const UserStorage = ({ children }: IUserStorageProps) => {
     },
   );
 
-  function updateTotalPages(total: number) {
-    setTotalPages(total);
-  }
-
-  function updatePage(page: number) {
-    setPage(page);
+  function updateCurrentPage(page: number) {
+    setCurrentPage(page);
   }
 
   function logout() {
     setUserName('');
     setUserGender('');
-    setPage(1);
-    setTotalPages(1);
+    setCurrentPage(1);
     setError('');
     localStorage.removeItem('@ioasys-books-token');
     Router.replace('/');
@@ -75,6 +69,8 @@ export const UserStorage = ({ children }: IUserStorageProps) => {
         userGender,
         logout,
         loginMutation,
+        updateCurrentPage,
+        currentPage,
       }}
     >
       {children}

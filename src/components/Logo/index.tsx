@@ -2,7 +2,7 @@ import React from 'react';
 import { Title, Wrapper } from './styles';
 import Image from 'next/image';
 
-interface LogoProps {
+type LogoProps = {
   color: 'white' | 'black';
 }
 
