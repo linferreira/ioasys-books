@@ -15,6 +15,7 @@ const img = '/assets/home-background.png';
 
 export const HomeContent = () => {
   const Router = useRouter();
+  const { currentPage } = useContext(UserContext);
 
   const [verified, setVerified] = useState(false);
 
@@ -28,8 +29,6 @@ export const HomeContent = () => {
     showModal,
     hadleShowModal,
   } = useContext(BooksContext);
-
-  const { currentPage } = useContext(UserContext);
 
   function loadBookDetails(id: string) {
     loadBookDetailsMutation.mutate(id);

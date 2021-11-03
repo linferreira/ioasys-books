@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
+import { useWindowDimention } from '../../hooks/useWindowDimention';
 import { Logo } from '../Logo';
 import { Button, Container, UserName, Wrapper } from './styles';
 
 export const Header = () => {
+  const { width } = useWindowDimention();
+
   const { userName, userGender, logout } = useContext(UserContext);
 
   return (
@@ -12,8 +15,13 @@ export const Header = () => {
       <Logo color="black" />
 
       <Wrapper>
-        <p>{userGender === 'M' ? 'Bem-Vindo,' : 'Bem-Vinda,'}</p>{' '}
-        <UserName>{userName}!</UserName>
+        {width > 767 && (
+          <>
+            <p>{userGender === 'M' ? 'Bem-Vindo,' : 'Bem-Vinda,'}</p>{' '}
+            <UserName>{userName}!</UserName>
+          </>
+        )}
+
         <Button onClick={logout}>
           <Image
             src={`/assets/logout.svg`}
