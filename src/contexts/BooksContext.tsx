@@ -27,7 +27,6 @@ export const BooksStorage = ({ children }: IBookStorageProps) => {
     },
     onSuccess: (result, variables, context) => {
       setBooksList(result.data.data);
-      console.log(result.data.data);
       updateTotalPages(Math.round(result.data.totalPages));
 
       setIsLoading(false);

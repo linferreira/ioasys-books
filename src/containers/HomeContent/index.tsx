@@ -85,7 +85,7 @@ export const HomeContent = () => {
               <Background urlImg={img}>
                 <Header />
                 <CardContainer>
-                  {booksList.length &&
+                  {!!booksList &&
                     booksList.map((item) => {
                       return (
                         <Card
