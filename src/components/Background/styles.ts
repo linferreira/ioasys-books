@@ -7,5 +7,4 @@ export const Content = styled.div<IImageUrl>`
   background: url(${({ urlImg }) => urlImg}) no-repeat center center;
   background-size: cover;
   height: 100vh;
-  width: 100vw;
 `;
