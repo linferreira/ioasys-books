@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { createContext, useState } from 'react';
 import { useMutation } from 'react-query';
-import { IUserContextInterface } from '../Interfaces/user';
+import { ILogin, IUserContextInterface } from '../Interfaces/user';
 import api from '../services/api';
 
 export const UserContext = createContext<IUserContextInterface | null>(null);
@@ -26,14 +26,14 @@ export const UserStorage = ({ children }: IUserStorageProps) => {
       return api.user.USER_LOGIN(data);
     },
     {
-      onError: (error, variables, context) => {
+      onError: (error: any) => {
         setError(
           error?.response?.data?.errors?.message ||
             'Infelizmente, algo deu errado.',
         );
         setIsLoading(false);
       },
-      onSuccess: (result, variables, context) => {
+      onSuccess: (result) => {
         const token = result.headers.authorization;
         localStorage.setItem('@ioasys-books-token', token);
 

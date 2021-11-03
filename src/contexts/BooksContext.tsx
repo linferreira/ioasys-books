@@ -20,14 +20,14 @@ export const BooksStorage = ({ children }: IBookStorageProps) => {
   const loadBooksMutation = useMutation(
     (page: number) => api.books.BOOKS_GET(page),
     {
-      onError: (error, variables, context) => {
+      onError: (error: any) => {
         setError(
           error?.response?.data?.errors?.message ||
             'Infelizmente, algo deu errado.',
         );
         setIsLoading(false);
       },
-      onSuccess: (result, variables, context) => {
+      onSuccess: (result) => {
         setBooksList(result.data.data);
         updateTotalPages(Math.round(result.data.totalPages));
 
@@ -39,7 +39,7 @@ export const BooksStorage = ({ children }: IBookStorageProps) => {
   const loadBookDetailsMutation = useMutation(
     (id: string) => api.books.BOOKSDETAILS_GET(id),
     {
-      onError: (error, variables, context) => {
+      onError: (error: any) => {
         setError(
           error?.response?.data?.errors?.message ||
             'Infelizmente, algo deu errado.',
@@ -47,7 +47,7 @@ export const BooksStorage = ({ children }: IBookStorageProps) => {
         hadleShowModal(false);
         setIsLoading(false);
       },
-      onSuccess: (result, variables, context) => {
+      onSuccess: (result) => {
         setBookDetails(result.data);
         hadleShowModal(true);
         setIsLoading(false);
